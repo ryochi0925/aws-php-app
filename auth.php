@@ -17,13 +17,13 @@ $username = $_POST["username"];
 $password_input = $_POST["password"];
 
 if (empty($username)) {
-        echo "ユーザー名を入力してください";
+        header("Location: login.php?error=username_required");
         exit;
 }
 
 if (empty($password_input)) {
-        echo "パスワードを入力してください";
-        exit;
+        header("Location: login.php?error=password_required");
+        exit;     
 }
 
 $sql = "SELECT * FROM accounts WHERE username = '$username'";
@@ -37,10 +37,12 @@ if ($result->num_rows > 0) {
 		header("Location: dbtest.php");
 		exit;
 	} else {
-		echo "ログイン失敗";
+               header("Location: login.php?error=login_failed");
+               exit;
 	}
 } else {
-	echo "ログイン失敗";
+               header("Location: login.php?error=login_failed");
+               exit;
 }
 
 $conn->close();
