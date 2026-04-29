@@ -12,8 +12,19 @@ if ($conn->connect_error) {
 	die("接続失敗");
 }
 
+
 $username = $_POST["username"];
 $password_input = $_POST["password"];
+
+if (empty($username)) {
+        echo "ユーザー名を入力してください";
+        exit;
+}
+
+if (empty($password_input)) {
+        echo "パスワードを入力してください";
+        exit;
+}
 
 $sql = "SELECT * FROM accounts WHERE username = '$username'";
 $result = $conn->query($sql);
@@ -34,3 +45,5 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
+
