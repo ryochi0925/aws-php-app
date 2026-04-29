@@ -36,3 +36,8 @@ GitHubへのpushとPull Requestの練習を行いました。
 
 ## コンフリクトテスト
 AとBの変更を両方残す
+
+
+##コンフリクトテスト
+Git conflict practice: Aの変更
+
